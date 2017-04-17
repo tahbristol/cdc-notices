@@ -2,10 +2,10 @@ require_relative '../scrape_notice'
 class CdcNotices::CLI
 
   def call
-    site = Scraper.new
-    site.get_Page
+    site = Scraper.new("https://wwwnc.cdc.gov/travel/notices")
+    site.get_page
     page = site.set_attributes
-    
+
     puts "CURRENT NOTICES"
     puts "Current Notices
 Travel notices are designed to inform travelers and clinicians about current health issues related to specific destinations. These issues may arise from disease outbreaks, special events or gatherings, natural disasters, or other conditions that may affect travelers’ health. See below for more information on our travel notice categories.
