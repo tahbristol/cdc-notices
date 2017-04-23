@@ -1,13 +1,17 @@
 require 'open-uri'
 require 'nokogiri'
 require 'openssl'
-require_relative 'readmore.rb'
+
+require_relative 'notice.rb'
+require_relative 'alert.rb'
 class Scraper
 
   attr_accessor :url
 
   def initialize(url)
     @url = url
+    @notice = Notice.new
+
   end
 
     def get_page
@@ -30,19 +34,22 @@ class Scraper
           array_alert << sl
          end
 
-         puts array_alert[0]
 
-          alert_hash[:title] = array_alert[0].css('a:not(.readmore)').text
-          alert_hash[:summary] = array_alert[0].css('span').text
-          alert_hash[:readmore] = array_alert[0].css('a').attr('href').text
-          puts "TITLE #{alert_hash[:title]}"
-          puts "SUMMARY #{alert_hash[:summary]}"
-          puts "READMORE #{alert_hash[:readmore]}"
+         array_alert.each do |alert|
+              new_alert = Alert.new
 
 
+              new_alert.title = alert.css('a:not(.readmore)').text
+            new_alert.summary = alert.css('span').text
+             new_alert.readmore = "#{@url.gsub(/\/travel\/notices/, "")}#{alert.css('a').attr('href').text}"
+            @notice.add_alert(new_alert)
+            #puts "********************"
+            #puts new_alert.title
+            #puts new_alert.summary
+            #puts new_alert.readmore
 
-
-
+            end
+              @notice
     end
 
 
