@@ -1,5 +1,6 @@
 require_relative '../scrape_notice'
 require_relative '../notice.rb'
+require 'launchy'
 class CdcNotices::CLI
 
 
@@ -17,10 +18,19 @@ class CdcNotices::CLI
   input = ""
   while input != "exit"
     puts "What would you like to do?"
+    puts "Press help for a list of commands"
     input = gets.strip
     case input
+    when "help"
+      puts "*****************************"
+      puts "all: Display all notices"
+      puts "readmore: open readmore in browser. 'readmore' press enter then enter the number corresponding to the notice you want"
+      puts "exit: exit the application"
+      puts "******************************"
     when "all"
       all_notices
+    when "readmore"
+      readmore
     when "exit"
       puts "Goodbye"
       break
@@ -30,14 +40,19 @@ class CdcNotices::CLI
 end
 
 
-def all_notices
-@notice.notices
+def readmore
+  puts "Which notice would you like to read?"
+  input = gets.strip
+  input = input.to_i - 1
+  Launchy.open("#{@notice.notices[input].readmore}")
+
+
 end
 
-def browse_readmore(index)
-  index = index.to_i - 1
-    system(open(@notice.notices[index]))
+def all_notices
+@notice.display_notices
 end
+
 
 
 

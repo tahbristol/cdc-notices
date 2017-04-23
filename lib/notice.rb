@@ -7,7 +7,7 @@ class Notice
     @notices = []
   end
 
-  def notices
+  def display_notices
     @notices.each.with_index(1) do |notice,i|
       puts "**************************"
       puts  "#{i}. notice.title"
@@ -17,7 +17,11 @@ class Notice
 
   end
 
+  def notices
+    @notices
+  end
 
+  
   def add_alert(alert)
     @notices << alert
   end
