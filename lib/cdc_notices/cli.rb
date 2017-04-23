@@ -13,7 +13,6 @@ class CdcNotices::CLI
   end
 
   def call
-  #html = open("https://wwwnc.cdc.gov/travel/notices", ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE)
 
   input = ""
   while input != "exit"
