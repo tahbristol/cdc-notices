@@ -27,65 +27,39 @@ class Scraper
         notice_hash = {:alert => main_content.css('#alert'), :watch => main_content.css('#watch'), :warning => main_content.css('#warning')}
 
         alerts = notice_hash[:alert].collect {|alert| alert.css('li')}
-=begin        alert_hash = {:title =>"",:summary => "", :readmore => ""}
-             alerts[0].each do |sl|
-          array_alert << sl
-=end
-
         watches = notice_hash[:watch].collect {|watch| watch.css('li')}
-
-
         warnings = notice_hash[:warning].collect {|warning| warning.css('li')}
 
+        alert_hash = {:title =>"",:summary => "", :readmore => ""}
+          alerts[0].each do |sl|
+            array_alert << sl
+          end
+
+             
 
 
-         make_hash(alerts).each do |alert|
-              new_alert = Alert.new
 
 
-              new_alert.title = alert.css('a:not(.readmore)').text
-            new_alert.summary = alert.css('span').text
-        new_alert.readmore = "#{@url.gsub(/\/travel\/notices/, "")}#{alert.css('a').attr('href').text}"
-
-            @notice.add_alert(new_alert)
-            #puts "********************"
-            #puts new_alert.title
-            #puts new_alert.summary
-            #puts new_alert.readmore
-
-            end
-              @notice
-    end
-
-
-    def make_hash(array)
-
-       hash = {:title => "",:summary => "", :readmore => ""}
-          final_hash_array = array[0].collect {|sl| sl }
-
-
-    end
-
-    def make_notice(array)
-      make_hash(hash_array).each do |alert|
-           new_alert = Alert.new
+           array_alert.each do |alert|
+                new_alert = Alert.new
 
 
            new_alert.title = alert.css('a:not(.readmore)').text
-         new_alert.summary = alert.css('span').text
-     new_alert.readmore = "#{@url.gsub(/\/travel\/notices/, "")}#{alert.css('a').attr('href').text}"
+           new_alert.summary = alert.css('span').text
+           new_alert.readmore = "#{@url.gsub(/\/travel\/notices/, "")}#{alert.css('a').attr('href').text}"
 
-         @notice.add_alert(new_alert)
-         #puts "********************"
-         #puts new_alert.title
-         #puts new_alert.summary
-         #puts new_alert.readmore
+           @notice.add_alert(new_alert)
+          end
+             @notice
 
-         end
-           @notice
 
 
     end
+
+
+
+
+
 
 
 end

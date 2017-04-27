@@ -49,7 +49,7 @@ def readmore
 end
 
 def all_notices
-@notice.display_notices
+@notice.display_all_notices
 end
 
 
