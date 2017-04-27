@@ -4,13 +4,15 @@ class Notice
   attr_accessor :notice_date
 
   def initialize
-    @notices = []
+    @alert_notices = []
+    @warning_notices = []
+    @watch_notices = []
   end
 
   def display_notices
     @notices.each.with_index(1) do |notice,i|
       puts "**************************"
-      puts  "#{i}. notice.title"
+      puts  "#{i}. #{notice.title}"
       puts notice.summary
       puts notice.readmore
     end
@@ -21,11 +23,16 @@ class Notice
     @notices
   end
 
-  
-  def add_alert(alert)
-    @notices << alert
-  end
 
+  def add_alert(alert)
+    @aler_notices << alert
+  end
+  def add_warning(warning)
+    @warning_notices << warning
+  end
+  def add_alert(watch)
+    @watch_notices << watch
+  end
 
 
 
