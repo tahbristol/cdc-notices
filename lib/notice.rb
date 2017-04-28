@@ -10,7 +10,7 @@ class Notice
     @watch_notices = []
   end
 
-  def display_all_notices
+  def display_notices
     self.notices.each.with_index(1) do |notice,i|
       puts "**************************"
       puts  "#{i}. #{notice.title}"
@@ -27,13 +27,16 @@ class Notice
 
   def add_alert(alert)
     @notices << alert
+    @alert_notices
   end
 
   def add_watch(watch)
+    @notices << watch
     @watch_notices << watch
   end
 
   def add_warning(warning)
+    @notices << warning
     @warning_notices << warning
   end
 

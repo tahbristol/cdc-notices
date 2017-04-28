@@ -28,6 +28,12 @@ class CdcNotices::CLI
       puts "******************************"
     when "all"
       all_notices
+    when "alerts"
+      alert_notices
+    when "warnings"
+      warning_notices
+    when "watches"
+      watch_notices
     when "readmore"
       readmore
     when "exit"
@@ -49,7 +55,11 @@ def readmore
 end
 
 def all_notices
-@notice.display_all_notices
+@notice.display_notices
+end
+
+def alert_notices
+  @notice.display_alerts
 end
 
 
