@@ -28,22 +28,28 @@ class Scraper
         list_blocks = main_content.css('.list_block')
         notice_hash = {:alert => main_content.css('#alert'), :watch => main_content.css('#watch'), :warning => main_content.css('#warning')}
 
-        alerts = notice_hash[:alert].collect {|alert| alert.css('li')} unless notice_hash[:alert] == nil
+        alerts = notice_hash[:alert].collect {|alert| alert.css('li')} 
         alert_hash = {:title =>"",:summary => "", :readmore => ""}
-
+        if alerts[0] != nil
           alerts[0].each do |alert|
             array_alert << alert
           end
-        watches = notice_hash[:watch].collect {|watch| watch.css('li')}
-        watches[0].each do |watch|
-          array_watch << watch
         end
-=begin
-        warnings = notice_hash[:warning].collect {|warning| warning.css('li')}
-        warnings[0].each do |warning|
-          array_warning << warning
-=end
 
+
+        watches = notice_hash[:watch].collect {|watch| watch.css('li')}
+        if watches[0] != nil
+          watches[0].each do |watch|
+            array_watch << watch
+          end
+        end
+
+        warnings = notice_hash[:warning].collect {|warning| warning.css('li')}
+        if warnings[0] != nil
+          warnings[0].each do |warning|
+            array_warning << warning
+          end
+        end
 
            array_alert.each do |alert|
                 new_alert = Alert.new
