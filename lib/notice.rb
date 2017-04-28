@@ -17,17 +17,37 @@ class Notice
       puts notice.summary
       puts notice.readmore
     end
-
   end
+   def display_alerts
+      self.alert_notices.each.with_index(1) do |notice,i|
+        puts "**************************"
+        puts  "#{i}. #{notice.title}"
+        puts notice.summary
+        puts notice.readmore
+      end
+
+end
 
   def notices
     @notices
   end
 
+ def alerts
+   @alert_notices
+ end
+
+ def warnings
+   @warning_notices
+ end
+
+ def watches
+   @watch_notices
+ end
+
 
   def add_alert(alert)
     @notices << alert
-    @alert_notices
+    @alert_notices << alert
   end
 
   def add_watch(watch)

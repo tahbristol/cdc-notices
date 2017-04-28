@@ -78,7 +78,7 @@ class Scraper
             @notice.add_warning(new_warning)
           end
 
-             @notice
+            @notice
 
 
 
