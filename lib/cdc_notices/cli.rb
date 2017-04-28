@@ -14,57 +14,64 @@ class CdcNotices::CLI
 
   def call
 
-  input = ""
-  while input != "exit"
-    puts "What would you like to do?"
-    puts "Press help for a list of commands"
-    input = gets.strip
-    case input
-    when "help"
-      puts "*****************************"
-      puts "all: Display all notices"
-      puts "readmore: open readmore in browser. 'readmore' press enter then enter the number corresponding to the notice you want"
-      puts "exit: exit the application"
-      puts "******************************"
-    when "all"
-      all_notices
-    when "alerts"
-      alert_notices
-    when "warnings"
-      warning_notices
-    when "watches"
-      watch_notices
-    when "readmore"
-      readmore
-    when "exit"
-      puts "Goodbye"
-      break
-    else
+    input = ""
+    while input != "exit"
+      puts "What would you like to do?"
+      puts "Press help for a list of commands"
+      input = gets.strip
+        case input
+        when "help"
+          puts "*****************************"
+          puts "all: Display all notices"
+          puts "alerts: Display alerts only."
+          puts "warnings: Display warnings only."
+          puts "watches: Display watches only."
+          puts "readmore: open readmore in browser. 'readmore' press enter then enter the number corresponding to the notice you want"
+          puts "exit: exit the application"
+          puts "******************************"
+        when "all"
+          all_notices
+        when "alerts"
+          alert_notices
+        when "warnings"
+          warning_notices
+        when "watches"
+          watch_notices
+        when "readmore"
+          readmore
+        when "exit"
+          puts "Goodbye"
+          break
+        else
+        end
+      end
     end
+
+
+  def readmore
+    puts "Which notice would you like to read?"
+    input = gets.strip
+    input = input.to_i - 1
+    Launchy.open("#{@notice.notices[input].readmore}")
+
+
   end
-end
 
+  def all_notices
+  @notice.display_notices
+  end
 
-def readmore
-  puts "Which notice would you like to read?"
-  input = gets.strip
-  input = input.to_i - 1
-  Launchy.open("#{@notice.notices[input].readmore}")
+  def alert_notices
+    @notice.display_alerts
+  end
 
+  def warning_notices
+    @notice.display_warnings
+  end
 
-end
-
-def all_notices
-@notice.display_notices
-end
-
-def alert_notices
-  @notice.display_alerts
-end
-
-def warning_notices
-  @notice.display_warnings
-end
+  def watch_notices
+    @notice.display_watches
+  end
 
 
 
