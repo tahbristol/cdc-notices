@@ -22,22 +22,27 @@ class Scraper
 
     def set_attributes
       array_alert = []
+      array_watch = []
+      array_warning = []
         main_content = self.get_page.css('#contentArea')
         list_blocks = main_content.css('.list_block')
         notice_hash = {:alert => main_content.css('#alert'), :watch => main_content.css('#watch'), :warning => main_content.css('#warning')}
 
-        alerts = notice_hash[:alert].collect {|alert| alert.css('li')}
-        watches = notice_hash[:watch].collect {|watch| watch.css('li')}
-        warnings = notice_hash[:warning].collect {|warning| warning.css('li')}
-
+        alerts = notice_hash[:alert].collect {|alert| alert.css('li')} unless notice_hash[:alert] == nil
         alert_hash = {:title =>"",:summary => "", :readmore => ""}
-          alerts[0].each do |sl|
-            array_alert << sl
+
+          alerts[0].each do |alert|
+            array_alert << alert
           end
-
-             
-
-
+        watches = notice_hash[:watch].collect {|watch| watch.css('li')}
+        watches[0].each do |watch|
+          array_watch << watch
+        end
+=begin
+        warnings = notice_hash[:warning].collect {|warning| warning.css('li')}
+        warnings[0].each do |warning|
+          array_warning << warning
+=end
 
 
            array_alert.each do |alert|
