@@ -62,6 +62,11 @@ def alert_notices
   @notice.display_alerts
 end
 
+def warning_notices
+  @notice.display_warnings
+end
+
+
 
 
 

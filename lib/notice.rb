@@ -11,20 +11,61 @@ class Notice
   end
 
   def display_notices
-    self.notices.each.with_index(1) do |notice,i|
-      puts "**************************"
-      puts  "#{i}. #{notice.title}"
-      puts notice.summary
-      puts notice.readmore
-    end
-  end
-   def display_alerts
-      self.alert_notices.each.with_index(1) do |notice,i|
+    if self.notices.empty?
+      puts "There are no current notices."
+    else
+      self.notices.each.with_index(1) do |notice,i|
         puts "**************************"
         puts  "#{i}. #{notice.title}"
         puts notice.summary
         puts notice.readmore
       end
+    end
+#
+#puts @alert_notices.size
+#puts @notices.size
+#puts @warning_notices.size
+#puts @watch_notices.size
+  end
+
+   def display_alerts
+      self.alerts.each.with_index(1) do |notice,i|
+        puts "**************************"
+        puts  "#{i}. #{notice.title}"
+        puts notice.summary
+        puts notice.readmore
+
+      end
+
+end
+
+def display_warnings
+  if self.warnings.empty?
+    puts "There are no current warnings."
+  else
+   self.warnings.each.with_index(1) do |notice,i|
+     puts "**************************"
+     puts  "#{i}. #{notice.title}"
+     puts notice.summary
+     puts notice.readmore
+
+   end
+ end
+
+end
+
+def display_watches
+  if self.watches.empty?
+    puts "There are no current watches."
+  else
+   self.warnings.each.with_index(1) do |notice,i|
+     puts "**************************"
+     puts  "#{i}. #{notice.title}"
+     puts notice.summary
+     puts notice.readmore
+
+   end
+ end
 
 end
 
