@@ -36,5 +36,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "nokogiri", "~> 1.7.1"
   spec.add_development_dependency "rubysl-open-uri"
   spec.add_development_dependency "launchy"
+
 #  spec.add_development_dependency "openssl", "~> 2.0.3"
 end
