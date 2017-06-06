@@ -1,4 +1,4 @@
-require_relative '../scrape_notice'
+require_relative '../scrape_notice.rb'
 require_relative '../notice.rb'
 require 'launchy'
 class CdcNotices::CLI
