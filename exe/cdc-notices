@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require './lib'
+require 'cdc_notices'
 
 CdcNotices::CLI.new.call

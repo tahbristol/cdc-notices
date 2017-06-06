@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["tahbristol"]
   spec.email         = ["tahbristol@gmail.com"]
 
-  spec.summary       = "gem for Flatiron. Desplays currrent infectious disease travel notices"#%q{TODO: Write a short summary, because Rubygems requires one.}
+  spec.summary       = "Displays currrent infectious disease travel notices from the Centers for Disease Control."#%q{TODO: Write a short summary, because Rubygems requires one.}
 #  spec.description   = %q{TODO: Write a longer description or delete this line.}
   #spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
@@ -36,5 +36,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "nokogiri", "~> 1.7.1"
   spec.add_development_dependency "rubysl-open-uri"
   spec.add_development_dependency "launchy"
+
 #  spec.add_development_dependency "openssl", "~> 2.0.3"
 end
