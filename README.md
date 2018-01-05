@@ -22,7 +22,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+1. Download gem.
+2. In the terminal, navigate to the downloaded folder.
+3. Run 'bundle install'. (this will require the bundler gem      
+   installed on the system)
+4. Run 'ruby bin/cdc-notices'
 
 ## Development
 
@@ -38,4 +42,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
